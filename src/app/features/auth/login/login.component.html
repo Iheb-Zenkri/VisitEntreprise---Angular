@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="form-box">
+      <h2>Bienvenue</h2>
+      <h4>Entrez votre e-mail et mot de passe pour vous connecter</h4>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+       
+        <div class="input-group">
+          <label>E-mail</label>
+          <div class="input">
+            <i class="fa-solid fa-envelope"></i>
+            <input type="email" formControlName="email" placeholder="Entrez votre e-mail" autocomplete="off" />
+          </div>
+          <p *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="error">
+            Un e-mail valide est requis.
+          </p>
+        </div>
+  
+        <div class="input-group">
+          <label>Mot de passe</label>
+          <div class="input">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" formControlName="password" placeholder="Entrez votre mot de passe" />
+          </div>
+          <p *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error">
+            Le mot de passe doit contenir au moins 6 caractères.
+          </p>
+        </div>
+
+        <div class="remember-forgot">
+          <label class="remember-me">
+            <input type="checkbox">
+            <span class="checkmark"><i class="fa-solid fa-check"></i></span>
+            <span>Se souvenir de moi</span>
+          </label>
+          <a href="" class="forgot-password">Mot de passe oublié ?</a>
+        </div>
+        
+        <button type="submit">Se connecter</button>
+      </form>
+      <p class="redirect">
+        Vous n'avez pas de compte ? <a routerLink="/inscription">Inscrivez-vous</a>
+      </p>
+    </div>
+  </div>

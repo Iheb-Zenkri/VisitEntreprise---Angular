@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="form-box">
+    <h2>Bienvenue</h2>
+    <h4>Remplissez les champs ci-dessous pour créer votre compte.</h4>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form-container" >
+      
+      <div class="full-name">
+        <div class="input-group">
+          <label class="required">Prénom</label>
+          <input type="text" formControlName="firstName" placeholder="Entrez votre prénom"[autocomplete]="'new-password'" />
+          <p *ngIf="registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched" class="error">
+            Le prénom est requis.
+          </p>
+        </div>
+      
+        <div class="input-group">
+          <label>Nom</label>
+          <input type="text" formControlName="lastName" placeholder="Entrez votre nom" [autocomplete]="'new-password'"/>
+        </div>
+      </div>
+    
+      <div class="input-group">
+        <label class="required">E-mail</label>
+        <div class="input">
+          <i class="fa-solid fa-envelope"></i>
+          <input type="email" formControlName="email" placeholder="Entrez votre e-mail" autocomplete="new-password" />
+        </div>
+        <p *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="error">
+          Un e-mail valide est requis.
+        </p>
+      </div>
+
+      <div class="input-group">
+        <label class="required">Mot de passe</label>
+        <div class="input">
+          <i class="fa-solid fa-lock"></i>
+          <input type="password" formControlName="password" placeholder="Entrez votre mot de passe" />
+        </div>
+        <p *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="error">
+          Le mot de passe doit contenir au moins 6 caractères.
+        </p>
+      </div>
+    
+      <div class="input-group">
+        <label class="required">Confirmez le mot de passe</label>
+        <div class="input">
+          <i class="fa-solid fa-lock"></i>
+          <input type="password" formControlName="confirmPassword" placeholder="Confirmez votre mot de passe" />
+        </div>
+        <p *ngIf="registerForm.get('confirmPassword')?.hasError('passwordMismatch')" class="error">
+          Les mots de passe ne correspondent pas.
+        </p>
+      </div>
+      
+      <button type="submit">S'inscrire</button>
+    </form>
+
+    <p class="redirect">
+      Vous avez déjà un compte ? <a routerLink="/connexion">Connexion</a>
+    </p>
+  </div>
+</div>

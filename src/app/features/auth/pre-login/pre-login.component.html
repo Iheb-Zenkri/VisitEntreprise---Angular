@@ -1,0 +1,36 @@
+<div class="body">
+    <div class="container">
+        <div class="form">
+            <h2>Comment souhaitez-vous procéder ?</h2>
+            <h4>Choisissez de vous connecter ou de vous inscrire comme Administrateur, Enseignant ou Étudiant.</h4>
+            <div class="selection-box" [ngClass]="{'active': selectedRole === 'ADMIN'}" (click)="setUserRole(0)">
+                <i class="fa-solid fa-building-columns"></i>                <div class="description">
+                    <h5>Administrateur</h5>
+                    <span>Organisez et gérez les visites d’entreprise pour les étudiants.</span>
+                    <i *ngIf="selectedRole === 'ADMIN'" class="fa-solid fa-circle-check check"></i>
+                </div>
+            </div>
+            
+            <div class="selection-box" [ngClass]="{'active': selectedRole === 'TEACHER'}" (click)="setUserRole(1)">
+                <i class="fa-solid fa-briefcase"></i>
+                <div class="description">
+                    <h5>Enseignant</h5>
+                    <span>Supervisez votre groupe d’étudiants pendant les visites.</span>
+                    <i *ngIf="selectedRole === 'TEACHER'" class="fa-solid fa-circle-check check"></i>
+                </div>
+            </div>
+            
+            <div class="selection-box" [ngClass]="{'active': selectedRole === 'STUDENT'}" (click)="setUserRole(2)">
+                <i class="fa-solid fa-user-group"></i>
+                <div class="description">
+                    <h5>Étudiant</h5>
+                    <span>Participez aux visites et découvrez le monde de l’entreprise.</span>
+                    <i *ngIf="selectedRole === 'STUDENT'" class="fa-solid fa-circle-check check"></i>
+                </div>
+            </div>
+            
+
+            <button (click)="submit()">Continue</button>
+        </div>
+    </div>
+</div>
