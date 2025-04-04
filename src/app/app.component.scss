@@ -1,0 +1,32 @@
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+  ::ng-deep mat-spinner circle {
+    stroke: #4727E7; 
+  }
+
+  .mat-mdc-snack-bar-container.custom-snackbar-error {
+    --mat-snack-bar-button-color: #eee;
+    --mdc-snackbar-container-color: #d32f2f;
+    --mdc-snackbar-container-shape: 8px;
+    --mdc-snackbar-supporting-text-color: #fff;
+    --mdc-snackbar-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+  
+    .mat-mdc-snack-bar-container.custom-snackbar-success {
+      --mat-snack-bar-button-color: #eee;
+      --mdc-snackbar-container-color: #4CAF50;
+      --mdc-snackbar-container-shape: 8px;
+      --mdc-snackbar-supporting-text-color: #fff;
+      --mdc-snackbar-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }

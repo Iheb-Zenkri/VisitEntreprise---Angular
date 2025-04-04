@@ -28,11 +28,11 @@
 
         <div class="remember-forgot">
           <label class="remember-me">
-            <input type="checkbox">
+            <input type="checkbox" formControlName="expiresIn30Days">
             <span class="checkmark"><i class="fa-solid fa-check"></i></span>
             <span>Se souvenir de moi</span>
           </label>
-          <a href="" class="forgot-password">Mot de passe oublié ?</a>
+          <button type="button" (click)="forgetPassword()" class="forgot-password">Mot de passe oublié ?</button>
         </div>
         
         <button type="submit">Se connecter</button>

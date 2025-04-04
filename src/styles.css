@@ -11,3 +11,5 @@ body{
     background-image: linear-gradient(120deg, #E6E2FF 0%, #ffffff 100%);
     height: 100vh;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

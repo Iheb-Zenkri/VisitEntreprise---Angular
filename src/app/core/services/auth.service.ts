@@ -1,3 +1,4 @@
+import { EmailValidator } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
@@ -15,8 +16,14 @@ export class AuthService {
     );
   }
 
+
   register(user: RegisterUser): Observable<any> {
     return this.http.post(`${this.apiUrl}/register`, user);
+  }
+
+  forgetPassword(email : String): Observable<any> {
+    const body = {email}
+    return this.http.post(`${this.apiUrl}/forgot-password`, body);
   }
 
   logout() {

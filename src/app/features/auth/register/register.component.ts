@@ -18,7 +18,7 @@ export class RegisterComponent {
     this.registerForm = this.fb.group(
       {
         firstName: ['', Validators.required],
-        lastName: ['', Validators.required],
+        lastName: ['', []],
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(6)]],
         confirmPassword: ['', Validators.required], 
@@ -49,7 +49,12 @@ export class RegisterComponent {
       return;
     }
 
-    this.authService.register(this.registerForm.value).subscribe({
+    const formData = { 
+      ...this.registerForm.value,
+      lastName: this.registerForm.get('lastName')?.value || null, // Ensure lastName is null if empty
+    };
+
+    this.authService.register(formData).subscribe({
       next: (data) => {
         console.log('Response:', data);
         this.router.navigate(['/connexion'])

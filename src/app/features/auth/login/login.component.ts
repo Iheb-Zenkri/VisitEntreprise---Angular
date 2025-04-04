@@ -17,16 +17,31 @@ export class LoginComponent {
     constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
       this.loginForm = this.fb.group({
         email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required, Validators.minLength(1)]]
+        password: ['', [Validators.required, Validators.minLength(1)]],
+        expiresIn30Days: [false] 
       });
     }
 
     onSubmit() {
       if (this.loginForm.valid) {
+        if (this.loginForm.invalid) {
+          this.loginForm.markAllAsTouched(); 
+          return;
+        }
+        console.log(this.loginForm.value)
         this.authService.login(this.loginForm.value).subscribe({
-          next: () => this.router.navigate(['/dashboard']),
-          error: (err) => console.error('Login failed:', err)
+          next: () => this.router.navigate(['/dashboard'])
         });
+      }
+    }
+
+    forgetPassword(){
+      if (this.loginForm.get('email')?.invalid) {
+        this.loginForm.get('email')?.markAsTouched(); 
+        return;
+      }else{
+        const email = this.loginForm.get('email')?.value;
+        this.authService.forgetPassword(email).subscribe();
       }
     }
 }
