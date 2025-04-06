@@ -6,11 +6,12 @@ import { TokenService } from './token.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private apiUrl = 'https://visitentreprise.onrender.com/api/auth';
+  private apiUrl = 'http://localhost:8080/api/auth';
+
 
   constructor(private http: HttpClient, private tokenService: TokenService) {}
 
-  login(credentials: { email: string; password: string }): Observable<any> {
+  login(credentials: { email: string; password: string; expiresIn30Days:boolean }): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, credentials).pipe(
       tap((response: any) => this.tokenService.setToken(response.token))
     );
