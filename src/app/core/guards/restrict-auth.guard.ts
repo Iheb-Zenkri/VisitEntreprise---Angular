@@ -5,10 +5,7 @@ import { Router } from '@angular/router';
 export const RestrictAuthGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
 
-  const isLoggedIn = typeof window !== 'undefined' && localStorage.getItem('isLoggedIn') === 'true';
-
-  console.log('RestrictAuthGuard is running');
-  console.log('isLoggedIn:', isLoggedIn);
+  const isLoggedIn = typeof window !== 'undefined' && localStorage.getItem('auth_token');
 
   if (!isLoggedIn) {
     console.log('User is not logged in, access granted');
@@ -16,8 +13,7 @@ export const RestrictAuthGuard: CanActivateFn = (route, state) => {
   } else {
     console.log('User is logged in, access denied, redirecting...');
 
-    // Fix: Ensure navigation works correctly
-    router.navigate(['/home'], { queryParams: { returnUrl: state.url } });
+    router.navigate(['/'], { queryParams: { returnUrl: state.url } });
 
     return false;
   }
