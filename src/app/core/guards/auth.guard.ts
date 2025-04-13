@@ -1,12 +1,14 @@
+import { TokenService } from './../services/token.service';
 import { CanActivateFn } from '@angular/router';
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 export const authGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);  
+  const tokenService = inject(TokenService)
 
   if (typeof window !== 'undefined' && window.localStorage) {
-    const userTypeSelected = localStorage.getItem('userType');
+    const userTypeSelected = tokenService.getUserRole() || localStorage.getItem('userType');
 
     if (userTypeSelected) {
       return true;

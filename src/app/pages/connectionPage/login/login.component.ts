@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
+import { TokenService } from '../../../core/services/token.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,8 @@ import { AuthService } from '../../../core/services/auth.service';
 export class LoginComponent {
   loginForm: FormGroup;
 
-    constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
+    constructor(private fb: FormBuilder, private authService: AuthService,
+      private tokenService : TokenService,private router : Router) {
       this.loginForm = this.fb.group({
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(1)]],
@@ -23,14 +25,17 @@ export class LoginComponent {
     }
 
     onSubmit() {
-      if (this.loginForm.valid) {
-        if (this.loginForm.invalid) {
-          this.loginForm.markAllAsTouched(); 
-          return;
-        }
-        console.log(this.loginForm.value)
+      if (this.loginForm.invalid) {
+        this.loginForm.markAllAsTouched(); 
+        return;
+      }
+      else {
         this.authService.login(this.loginForm.value).subscribe({
-          next: () => this.router.navigate(['/dashboard'])
+          next: async (response :any) =>{
+            this.tokenService.setToken(response.token)
+            const redirectTo = `/${this.tokenService.getUserRole().toLowerCase()}`;
+            this.router.navigate([redirectTo]);
+          }
         });
       }
     }

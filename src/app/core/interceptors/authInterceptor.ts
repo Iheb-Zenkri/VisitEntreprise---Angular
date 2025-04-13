@@ -16,7 +16,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
   if (tokenService.isTokenExpired()) {
     tokenService.clearToken();
-    router.navigateByUrl('/login');
+    router.navigateByUrl('/connexion');
     throw new Error('Token expired');
   }
 

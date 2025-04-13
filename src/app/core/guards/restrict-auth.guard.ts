@@ -1,20 +1,24 @@
-import { CanActivateFn } from '@angular/router';
+import { CanActivateFn, Router } from '@angular/router';
 import { inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { TokenService } from '../services/token.service'; // assumes you decode and validate tokens here
 
-export const RestrictAuthGuard: CanActivateFn = (route, state) => {
+export const RestrictAuthGuard: CanActivateFn = () => {
   const router = inject(Router);
+  const tokenService = inject(TokenService);
 
-  const isLoggedIn = typeof window !== 'undefined' && localStorage.getItem('auth_token');
 
-  if (!isLoggedIn) {
-    console.log('User is not logged in, access granted');
+  if (tokenService.isTokenExpired()) {
     return true;
-  } else {
-    console.log('User is logged in, access denied, redirecting...');
-
-    router.navigate(['/'], { queryParams: { returnUrl: state.url } });
-
-    return false;
   }
+
+  const role = tokenService.getUserRole();
+
+  if (role) {
+    const redirectTo = `/${role.toLowerCase()}`;
+    router.navigate([redirectTo]);
+  } else {
+    router.navigate(['/']);
+  }
+
+  return false;
 };

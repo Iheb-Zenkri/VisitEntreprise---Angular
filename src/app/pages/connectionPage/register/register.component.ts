@@ -28,7 +28,7 @@ export class RegisterComponent {
   }
 
   private getUserRole(): UserRole {
-    const storedRole = localStorage.getItem('userType') ?? 'STUDENT';
+    const storedRole = localStorage.getItem('userType');
     return UserRole[storedRole as keyof typeof UserRole] || UserRole.STUDENT;
   }
 
@@ -51,13 +51,13 @@ export class RegisterComponent {
 
     const formData = { 
       ...this.registerForm.value,
-      lastName: this.registerForm.get('lastName')?.value || null, // Ensure lastName is null if empty
+      lastName: this.registerForm.get('lastName')?.value || null,
     };
 
     this.authService.register(formData).subscribe({
       next: (data) => {
         console.log('Response:', data);
-        this.router.navigate(['/connexion'])
+        this.router.navigate(['/authentification/connexion'])
       },
       error: (err) => console.error('Registration failed:', err)
     });

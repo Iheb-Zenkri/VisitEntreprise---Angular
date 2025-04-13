@@ -11,8 +11,9 @@ interface JwtPayload {
 export class TokenService {
   private tokenKey = 'auth_token';
 
-  setToken(token: string) {
+  setToken(token: string){
     localStorage.setItem(this.tokenKey, token);
+    localStorage.setItem('userType', this.getUserRole());
   }
 
   getToken(): string | null {
@@ -35,4 +36,16 @@ export class TokenService {
   clearToken() {
     localStorage.removeItem(this.tokenKey);
   }
+
+  getUserRole(): string {
+    const token = this.getToken();
+    if (!token) return '';
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      return payload?.role || ''; 
+    } catch (e) {
+      return '';
+    }
+  }
+  
 }

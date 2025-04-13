@@ -12,6 +12,11 @@ import { UserRole } from '../../../core/services/auth.service';
 })
 export class PreLoginComponent {
 
+  
+  ngOnInit(): void {
+    localStorage.removeItem('userType');
+  }
+
   setUserRole(index: number) {
   switch(index){
     case 0 : this.selectedRole = UserRole.ADMIN;break;
@@ -24,6 +29,6 @@ export class PreLoginComponent {
   constructor(private router :Router){}
   submit(){
     localStorage.setItem('userType', this.selectedRole)
-    this.router.navigate(['\connexion']);
+    this.router.navigate(['authentification/connexion']);
   }
 }
