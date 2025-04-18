@@ -5,12 +5,22 @@ import { Observable } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class ApiService {
   private http = inject(HttpClient);
-  private baseUrl = 'https://localhost:8080/api';
+  private baseUrl = 'http://localhost:8080/api';
 
   get<T>(endpoint: string): Observable<T> {
     return this.http.get<T>(`${this.baseUrl}/${endpoint}`);
   }
-
+  
+  getBlob(endpoint: string): Observable<Blob> {
+    const token = localStorage.getItem('auth_token');
+    const headers = {
+      Authorization: `Bearer ${token}`
+    };
+    return this.http.get(`${this.baseUrl}/${endpoint}`, {
+      headers,
+      responseType: 'blob'
+    });
+  }
   post<T>(endpoint: string, payload: any): Observable<T> {
     return this.http.post<T>(`${this.baseUrl}/${endpoint}`, payload);
   }

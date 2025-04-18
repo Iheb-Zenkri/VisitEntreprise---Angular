@@ -1,2 +1,7 @@
-<p>dashboard works!</p>
-<button (click)="logout()">Login</button>
+<div class="layout">
+    <SideBar></SideBar>
+    <div class="content">
+      <Header></Header>
+      <router-outlet></router-outlet>
+    </div>
+  </div>

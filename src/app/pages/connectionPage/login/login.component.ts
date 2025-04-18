@@ -33,6 +33,7 @@ export class LoginComponent {
         this.authService.login(this.loginForm.value).subscribe({
           next: async (response :any) =>{
             this.tokenService.setToken(response.token)
+            localStorage.setItem('user',JSON.stringify(response.user))
             const redirectTo = `/${this.tokenService.getUserRole().toLowerCase()}`;
             this.router.navigate([redirectTo]);
           }

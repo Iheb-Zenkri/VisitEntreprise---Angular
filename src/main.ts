@@ -12,11 +12,14 @@ import { authInterceptor } from './app/core/interceptors/authInterceptor';
 bootstrapApplication(AppComponent,{
   providers: [
     provideRouter(routes),
-    provideHttpClient(withInterceptors([
-      errorInterceptor,
-      loadingInterceptor,
-      authInterceptor,])), 
-      provideAnimationsAsync()
+    provideHttpClient(
+        withInterceptors([
+        errorInterceptor,
+        loadingInterceptor,
+        authInterceptor,
+      ])
+    ), 
+    provideAnimationsAsync()
   ]
 })
   .catch((err) => console.error(err));

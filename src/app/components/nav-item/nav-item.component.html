@@ -1,0 +1,5 @@
+<a [ngClass]="{'active-nav-item': isActive, 'inactive-nav-item': !isActive}" 
+     class="nav-item" [routerLink]="routerLink" >
+    <i [ngClass]="faClass" ></i>  
+    <span class="nav-label">{{ label }}</span>
+</a>
