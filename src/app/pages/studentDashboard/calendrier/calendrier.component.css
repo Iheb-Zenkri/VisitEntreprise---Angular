@@ -1,0 +1,130 @@
+.container {
+    padding: 16px;
+    display: flex;
+    gap: 30px;
+  }
+
+  .visit-view{
+    display: flex;
+    gap: 30px;
+  }
+  
+  .visit-list{
+    background-color: white;
+    padding: 16px;
+    border-radius: 16px;
+    box-shadow: 10px 10px 50px rgba(195,129,255,0.2);
+    width:fit-content;
+    height:80vh;
+    overflow-y: scroll;
+    scrollbar-color: rgba(195,129,255,1);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .skeleton-card {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 6px;
+    width: 600px;
+    animation: pulse-border 1.5s infinite;
+  }
+
+.skeleton-aside{
+    width: 490px;
+    height: 80vh;
+    background-color: white;
+    padding: 16px;
+    border-radius: 16px;
+    box-shadow: 0 20px 80px rgba(195,129,255,0.2);
+    gap: 10px;
+    animation: pulse 1.5s infinite;
+}
+
+  .skeleton-image{
+    height: 120px;
+    width: 120px;
+    border-radius: 8px;
+    animation: pulse 1.5s infinite;
+  }
+  
+  
+
+  .skeleton-details{
+    height: 120px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 8px;
+  }
+  .skeleton-title , .skeleton-location{
+    height: 50px;
+    width: 100%;
+    border-radius: 50px;
+    animation: pulse 1.5s infinite;
+
+  }
+  .skeleton-teacher{
+    width: 100%;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+  }
+  .skeleton-teacher .skeleton-img{
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    animation: pulse 1.5s infinite;
+  }
+
+  .skeleton-teacher .skeleton-name{
+    width: 100%;
+    height: 25px;
+    border-radius: 50px;
+    animation: pulse 1.5s infinite;
+  }
+  
+  .skeleton-tail{
+    flex-grow: 1;
+    height: 100%;
+    gap: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: space-between;
+  }
+
+  .skeleton-time , .skeleton-date{
+    height: 20px;
+    width: 80px;
+    border-radius: 8px;
+    animation: pulse 1.5s infinite;
+  }
+
+  .skeleton-more{
+    height: 30px;
+    width: 90px;
+    border-radius: 50px;
+    animation: pulse 1.5s infinite;
+  }
+  @keyframes pulse {
+    0% { background-color: #e0e0e0; }
+    50% { background-color: #f0f0f0; }
+    100% { background-color: #e0e0e0; }
+  }
+  
+  @keyframes pulse-border {
+    0% { border: 2px solid  #e0e0e0; }
+    50% { border: 2px solid #f0f0f0; }
+    100% { border: 2px solid #e0e0e0; }
+  }
+
+  .no-data {
+    text-align: center;
+    color: gray;
+  }
+  

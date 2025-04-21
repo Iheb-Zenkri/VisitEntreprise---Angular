@@ -14,6 +14,13 @@
         <div class="notification">
             <i class="fa-regular fa-bell"></i>
         </div>
-        <img class="profile" [src]="profileImageUrl" alt="photo de profile">
+        <div class="profile" >
+            <img (click)="toggleDropdownProfile()"class="profile" [src]="profileImageUrl" alt="photo de profile">
+            <ProfilePopup [dropdownVisibleProfile] = "dropdownVisibleProfile"
+                        [username]="userName"
+                        [profileImageUrl]="profileImageUrl"
+                        [email]="email"                
+            ></ProfilePopup>
+        </div>
     </div>
 </div>

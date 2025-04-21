@@ -1,0 +1,129 @@
+.card{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    overflow: hidden;
+    max-width: 600px;
+    gap: 16px;
+}
+
+.card>img{
+    width: 120px;
+    height: 120px;
+    border-radius: 8px;
+    object-fit: contain;
+    border: 3px solid #f9f2ff;
+}
+
+
+.details{
+    height: 100px;
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+h2 ,h4 {
+    white-space: nowrap;           
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;  
+    display: block;
+  }
+
+  .details h2{
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: #393F47;
+  }
+
+  .details>h4{
+    font-size: 16px;
+    font-weight: 300;
+    color :#727E78;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+.details .teacher{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.details .teacher img{
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+.details .teacher h4{
+    font-size: 16px;
+    font-weight: 300;
+    color: #727E78;
+}
+
+.tail{
+    display: flex;
+    flex-grow: 1;
+    height: 120px;
+    flex-direction: column;
+    align-items: end;
+    gap: 25px;
+    padding: 10px 0;
+}
+
+.tail .date{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 12px;
+}
+
+.tail .date span{
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #727E78;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+.tail i{
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.more{
+    padding: 8px 30px;
+    border: 1px solid #c381ff;
+    border-radius: 50px;
+    background-color: #fff;
+    color: #c381ff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.more:hover{
+    background-color: #cf9aff;
+    color: #fff;
+}
+
+.more.active-btn{
+    background-color: #c381ff;
+    color: #fff;
+}
+
+.more.active-btn:hover{
+    background-color: #af74e5;
+}

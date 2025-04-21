@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="head">
+        <span class="date"><i class="fa-regular fa-calendar"></i> {{getDate()}} {{getTime()}}</span>
+        <span class="status">{{visit?.status}}</span>
+    </div>
+    <h2>Profil d'entreprise</h2>
+    <img [src]="companyPictureUTL" alt="photo d'entreprise">
+    <div class="company">
+        <h4>{{visit?.company?.name}}</h4>
+        <span><i class="fa-solid fa-location-dot"></i>{{visit?.company?.address}}</span>
+        <span><i class="fa-solid fa-medal"></i>{{visit?.company?.expertiseDomain}}</span>
+        <div class="contact">
+            <span *ngIf="visit?.company?.contactEmail != null"><i class="fa-regular fa-envelope"></i> {{visit?.company?.contactEmail}}</span>
+            <div class="line"></div>
+            <span *ngIf="visit?.company?.contactPhone != null"><i class="fa-solid fa-phone"></i> {{visit?.company?.contactPhone}}</span>
+        </div>
+        <div class="extra">
+            <span>Score <b>{{visit?.company?.relevanceScore}}</b>/100</span>
+            <span>Ancien Visites : <b>{{visit?.company?.visitFrequency}}</b></span>
+        </div>
+    </div>
+    <h2>Profil de Responsable</h2>
+    <img [src]="responsiblePictureURL" alt="photo d'enseignant">
+    <div class="responsible">
+        <h4>{{visit?.responsible?.lastName}} {{visit?.responsible?.firstName}}</h4>
+        <h6><i class="fa-solid fa-envelope"></i>{{visit?.responsible?.email}} </h6>
+        <span>dernière connexion : <b>{{getLastLogin()}}</b></span>
+    </div>
+    
+</div>

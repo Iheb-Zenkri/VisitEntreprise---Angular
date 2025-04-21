@@ -1,0 +1,21 @@
+<div class="card">
+    <img [src]="companyPictureUTL" alt="photo d'entreprise">
+    <div class="details">
+        <h2>{{visit!.company.name}}</h2>
+        <div class="teacher">
+            <img [src]="responsiblePictureURL" alt="photo enseignant">
+            <h4>{{visit!.responsible.lastName}} {{visit!.responsible.firstName}}</h4>
+        </div>
+        <h4><i class="fa-solid fa-location-dot"></i>{{visit!.company.address}}</h4>
+    </div>
+    <div class="tail">
+        <div class="date">
+            <span ><i class="fa-regular fa-clock"></i>{{getTime()}}</span>
+            <span ><i class="fa-regular fa-calendar"></i>{{getDate()}}</span>
+
+        </div>
+        <button class="more" (click)="actionClicked.emit()" [ngClass]="{'active-btn' : isActive}">
+            plus
+        </button>
+    </div>
+</div>
