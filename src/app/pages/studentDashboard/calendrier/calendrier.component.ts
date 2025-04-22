@@ -20,7 +20,7 @@ export class CalendrierComponent {
   constructor(private visitService: ApiService) {}
 
   ngOnInit(): void {
-    this.visitService.get<Visit[]>('visits').subscribe({
+    this.visitService.get<Visit[]>('visits/unfinished').subscribe({
       next: (data: Visit[]) => {
         this.visits = data
         if (this.visits.length > 0) {
@@ -42,6 +42,6 @@ export class CalendrierComponent {
   onVisitActionClick(visitId: number): void {
       this.selectedVisitId = visitId;
       this.selectedVisit = this.visits.find(v => v.id === visitId);
-    }
+  }
 }
 

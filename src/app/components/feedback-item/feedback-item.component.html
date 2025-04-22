@@ -1,0 +1,16 @@
+<div class="feedback-card">
+    <div class="user">
+        <img [src]="responsiblePictureURL" alt="user photo">
+        <h2>{{feedback?.user?.lastName}} {{feedback?.user?.firstName}}</h2>
+        <span>
+            <i class="fa-regular fa-calendar"></i>{{getDate()}}
+            <i class="fa-regular fa-clock"></i>{{getTime()}}
+        </span>
+    </div>
+    <div class="comment">
+        {{feedback?.comment}}
+    </div>
+    <div class="stars">
+        <i *ngFor="let icon of icons" [class]="icon"></i>
+    </div>
+</div>

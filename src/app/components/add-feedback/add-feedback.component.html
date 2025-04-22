@@ -1,0 +1,17 @@
+<div class="popup-overlay" >
+    <div class="popup-form">
+      <h3>Ajouter un Feedback</h3>
+      <form (ngSubmit)="onSubmit()">
+        <textarea 
+          [(ngModel)]="comment" 
+          name="comment" 
+          placeholder="Votre feedback ici..." 
+          required>
+        </textarea>
+        <div class="form-actions">
+          <button class="send" type="submit" [disabled]="!comment.trim()">Envoyer</button>
+          <button class="cancel" type="button" (click)="onCancel()">Annuler</button>
+        </div>
+      </form>
+    </div>
+  </div>

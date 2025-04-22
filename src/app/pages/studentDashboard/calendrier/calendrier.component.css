@@ -112,15 +112,15 @@
     animation: pulse 1.5s infinite;
   }
   @keyframes pulse {
-    0% { background-color: #e0e0e0; }
-    50% { background-color: #f0f0f0; }
-    100% { background-color: #e0e0e0; }
+    0% { background-color: #f0f0f0; }
+    50% { background-color: #fafafa; }
+    100% { background-color: #f0f0f0; }
   }
   
   @keyframes pulse-border {
-    0% { border: 2px solid  #e0e0e0; }
-    50% { border: 2px solid #f0f0f0; }
-    100% { border: 2px solid #e0e0e0; }
+    0% { border: 2px solid  #f0f0f0; }
+    50% { border: 2px solid #fafafa; }
+    100% { border: 2px solid #f0f0f0; }
   }
 
   .no-data {

@@ -1,0 +1,10 @@
+<div class="visit-card" [ngClass]="{'active' : isActive}" (click)="actionClicked.emit()">
+    <img [src]="companyPictureUTL" alt="photo d'enteprise">
+    <div class="right">
+        <h4>{{visit?.company?.name}}</h4>
+        <div class="down">
+            <span>{{visit?.feedbacksCount}} feedbacks</span>
+            <h6>{{getDate()}}</h6>
+        </div>
+    </div>
+</div>

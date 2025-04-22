@@ -1,0 +1,57 @@
+.visit-card{
+    display: flex;
+    gap: 12px;
+    padding: 4px 8px;
+    width: 350px;
+    border-radius: 12px;
+    border: 1px solid #f9f2ff;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.visit-card:hover{
+    background-color: #fcf9ff;
+}
+
+.visit-card.active{
+    background-color: #f9f2ff;
+}
+
+img{
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    object-fit: contain;
+    border: 2px solid #f9f2ff;
+}
+
+.right{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.right h4{
+    font-size: 18px;
+    font-weight: 500;
+    color: #111;
+}
+
+.down{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+
+}
+
+span{
+    font-size: 14px;
+    font-weight: 500;
+    color: #c381ff;
+}
+
+h6{
+    font-size: 14px;
+    font-weight: 500;
+    color: #727E78;
+}

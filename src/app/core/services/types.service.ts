@@ -23,12 +23,13 @@ export interface Visit {
   updatedAt: string;
   responsible: Teacher;
   company: Company;
+  feedbacksCount: number;
 }
 
 
 export interface Feedback {
   id: number;
-  feedbackRating: 'ONE_STAR' | 'TWO_STAR' | 'THREE_STAR' | 'FOUR_STAR' | 'FIVE_STAR'; // adjust based on enum
+  feedbackRating: FeedbackRating
   comment: string;
   createdAt: string;
   updatedAt: string;
