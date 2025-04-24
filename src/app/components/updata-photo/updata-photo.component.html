@@ -1,0 +1,25 @@
+<div class="popup-overlay">
+    <div class="popup-form">
+        <label for="fileInput" class="image-upload">
+            <img *ngIf="imagePreview" [src]="imagePreview" alt="Preview" class="preview-img" />
+            <input
+            type="file"
+            id="fileInput"
+            accept="image/*"
+            hidden
+            (change)="onImageSelected($event)"
+            />
+        </label>
+  
+        <div class="placeholder" >
+            Cliquez ci-dessus pour changer votre photo de profil
+        </div>
+
+        <div class="form-actions">
+            <button class="send" [disabled]="notChanged" (click)="onSubmit()">Envoyer</button>
+            <button class="cancel" type="button" (click)="onCancel()">Annuler</button>
+        </div>
+  
+    </div>
+  </div>
+  

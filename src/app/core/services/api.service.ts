@@ -21,6 +21,15 @@ export class ApiService {
       responseType: 'blob'
     });
   }
+  uploadImage(endpoint: string, formData: FormData): Observable<any> {
+    const token = localStorage.getItem('auth_token');
+    const headers = {
+      Authorization: `Bearer ${token}`
+    };
+  
+    return this.http.post(`${this.baseUrl}/${endpoint}`, formData, { headers });
+  }
+  
   post<T>(endpoint: string, payload: any): Observable<T> {
     return this.http.post<T>(`${this.baseUrl}/${endpoint}`, payload);
   }

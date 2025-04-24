@@ -65,3 +65,9 @@ export interface Teacher{
   email: string;
   lastLogin: string;
 }
+
+export interface Group{
+  id: number;
+  name: string;
+  students: Teacher[];
+}

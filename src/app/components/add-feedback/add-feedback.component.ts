@@ -35,11 +35,7 @@ export class AddFeedbackComponent {
       };
 
       this.apiService.post('feedback', feedbackData).subscribe(
-        (response) => {
-          console.log('Feedback submitted successfully:', response);
-          this.comment = ''; 
-          this.feedbackCancelled.emit();
-        },
+        () => window.location.reload(),
         (error) => {
           console.error('Error submitting feedback:', error);
         }

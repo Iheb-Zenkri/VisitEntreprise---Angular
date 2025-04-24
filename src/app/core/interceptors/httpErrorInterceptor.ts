@@ -24,7 +24,7 @@ export const errorInterceptor: HttpInterceptorFn = (req: HttpRequest<unknown>, n
     }),
 
     catchError((error: HttpErrorResponse) => {
-      if(error.status != 0){
+      if(error.status != 0 && error.status != 404){
         snackBar.open(error.error.message, 'D\'accord', {
           duration: Infinity,
           horizontalPosition: 'center',

@@ -1,0 +1,57 @@
+<div class="popup-overlay">
+    <div class="popup-form">
+        <form #userForm="ngForm" (ngSubmit)="onSubmit()" >            
+          <div class="input-group">
+            <label >Nom</label>
+            <input
+              type="text"
+              name="lastName"
+              [(ngModel)]="updatedUser.lastName"
+              placeholder="Votre Nom"
+              required
+              (ngModelChange)="onFormChange()"
+              />
+          </div>
+
+          <div class="input-group">
+            <label >Prénom</label>
+              <input
+                type="text"
+                name="firstName"
+                [(ngModel)]="updatedUser.firstName"
+                placeholder="Votre Prénom"
+                required
+                (ngModelChange)="onFormChange()"
+              />
+          </div>
+
+          <div class="input-group">
+            <label >Email</label>
+            <input
+            type="email"
+            name="email"
+            [(ngModel)]="updatedUser.email"
+            placeholder="Votre Email"
+            required
+            (ngModelChange)="onFormChange()"
+            />
+          </div>
+          
+            <div class="input-group">
+              <label >Mot de passe</label>
+              <input
+              type="password"
+              name="password"
+              [(ngModel)]="updatedUser.password"
+              placeholder="(laisser vide pour conserver l'actuel)"
+              (ngModelChange)="onFormChange()"
+              />
+            </div>
+        </form>
+          
+        <div class="form-actions">
+            <button class="send" [disabled]="notChanged" (click)="onSubmit()">Envoyer</button>
+            <button class="cancel" type="button" (click)="onCancel()">Annuler</button>
+        </div>
+    </div>
+</div>

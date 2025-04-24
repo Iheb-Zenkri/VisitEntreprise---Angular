@@ -1,1 +1,89 @@
-<p>profile works!</p>
+<div class="container">
+    <div class="left">
+        <div class="user-data">
+            <img [src]="profileImageUrl" alt="">
+            <div class="info">
+                <h2>{{user?.lastName}} {{user?.firstName}}</h2>
+                <h4>{{user?.email}}</h4>
+            </div>
+            <div class="edit-button">
+                <button (click)="toggleUpdatePhoto()">Modifier<i class="fa-regular fa-pen-to-square"></i></button>
+            </div>
+        </div>
+
+        <div class="user-info">
+            <span class="header">
+                <h2>Informations Personnelles</h2>
+                <div class="edit-button">
+                    <button (click)="toggleUpdateInfo()">Modifier<i class="fa-regular fa-pen-to-square"></i></button>
+                </div>
+            </span>
+            <div class="row">
+                <div class="col">
+                    <span>Nom</span>
+                    <h4>{{user?.lastName}}</h4>
+                </div>
+                <div class="col">
+                    <span>Prénom</span>
+                    <h4>{{user?.firstName}}</h4>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <span>Email</span>
+                    <h4>{{user?.email}}</h4>
+                </div>
+                <div class="col">
+                    <span>Role</span>
+                    <h4>{{user?.role}}</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="user-stat">
+            <div class="item">
+                <h4>{{studentStats.visited}}</h4>
+                <span>visites terminées</span>
+            </div>
+            <div class="item">
+                <h4>{{studentStats.upcomingVisits}}</h4>
+                <span>visites à venir</span>
+            </div>
+            <div class="item">
+                <h4>{{studentStats.feedbacks}}</h4>
+                <span>commentaires</span>
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <div class="group-list">
+            <h1>Groupe : {{studentGroup.name}}</h1>
+            <h2>Membres de Groupe</h2>
+            <div class="student-list">
+                <div *ngIf="studentGroup.students.length > 0; else noData">
+                    <app-student-item
+                    *ngFor="let student of studentGroup.students"
+                    [student]="student"
+                    ></app-student-item>
+                </div>
+
+                <ng-template #noData>
+                    <p class="no-data">Aucun etudiant dans ce Groupe</p>
+                  </ng-template>
+            </div>
+        </div>
+    </div>
+</div>
+<app-updata-photo
+    *ngIf="showUpdatePhoto" 
+    [userId]="user?.id??0"
+    (photoCancelled)="toggleUpdatePhoto()"
+    [imagePreview]="profileImageUrl"
+></app-updata-photo>
+
+<app-update-user-info
+    *ngIf="showUpdateInfo" 
+    [user]="user"
+    (updateCancelled)="toggleUpdateInfo()"
+></app-update-user-info>

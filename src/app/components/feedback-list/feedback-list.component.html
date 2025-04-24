@@ -10,19 +10,14 @@
         </div>
     </div>
     <h2>Feedbacks de Visite :</h2>
-    <ng-container *ngIf="isLoading; else feedbackList" >
-    </ng-container>
 
-    <ng-template #feedbackList >
         <div *ngIf="feedbacks.length > 0; else noData">
             <app-feedback-item 
                 *ngFor="let feedback of feedbacks"
                 [feedback]="feedback"
             ></app-feedback-item>
         </div>
-</ng-template>
   
-<!-- No Data Template -->
 <ng-template #noData>
   <p class="no-data">Aucun Feedback pour cette Visite</p>
 </ng-template>
