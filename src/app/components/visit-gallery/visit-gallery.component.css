@@ -1,0 +1,146 @@
+.container{
+    background-color: white;
+    padding: 16px;
+    border-radius: 16px;
+    box-shadow: 10px 10px 50px rgba(195,129,255,0.2);
+    width:fit-content;
+    height:80vh;
+    overflow-y: scroll;
+    scrollbar-color: rgba(195,129,255,1);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.container>div>h2{
+    margin: 10px;
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #222;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+.company{
+    display: flex;
+    padding: 0 12px;
+    gap: 16px;
+    width: 700px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+}
+
+
+.company .add-button{
+    all: unset;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 8px 10px;
+    background-color: #fff;
+    border: 2px solid #c381ff;
+    border-radius: 100%;
+    color: #c381ff;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.company .add-button:hover{
+    background-color: #c381ff;
+    color: #fff;
+}
+
+.company>img{
+    width: 140px;
+    height: 140px;
+    border-radius: 16px;
+    border: 5px solid #f9f2ff;
+}
+
+.company .other{
+    padding: 14px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 14px;
+    position: relative;
+    flex-grow: 1;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .other> h6{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 500;
+    color: #393F47;
+    letter-spacing: 1px;
+}
+
+.other b{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px;
+    color: #fff;
+    background-color: #FFA09B;
+    border-radius: 6px;
+    text-align: center;
+    width: 150px;
+    text-align: center;
+}
+
+ h6 i{
+    color: #FFA09B;
+}
+
+.other h2{
+    font-size: 26px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: #c381ff;
+}
+
+.other h4{
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    color : #727E78;
+}
+
+.other h4>span{
+    font-weight: 500;
+    color :#c381ff;
+}
+.other> span{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 18px;
+    color: #393F47;
+}
+.other> span:first-of-type i {
+    color: #FFA09B;
+}
+
+.other> span:nth-of-type(2) i {
+    color: #FCC737; 
+}
+
+
+.no-data {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: gray;
+}

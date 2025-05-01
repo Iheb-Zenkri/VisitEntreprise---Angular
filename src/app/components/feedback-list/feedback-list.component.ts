@@ -26,15 +26,14 @@ export class FeedbackListComponent {
       this.api.get<Feedback[]>(`feedback/visit/${this.visit?.id}`).subscribe({
         next: (data: Feedback[]) => {
           this.feedbacks = data
-          console.log(this.feedbacks)
           setTimeout(() => {
             this.isLoading = false;
-          }, 1000);
+          }, 300);
         },
         error: () => {
           setTimeout(() => {
             this.isLoading = false;
-          }, 1000);
+          }, 300);
         }
       });
     if (changes['visit'] && this.visit) {

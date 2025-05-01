@@ -35,12 +35,12 @@ export class FeedbacksComponent {
         }
         setTimeout(() => {
           this.isLoading = false;
-        }, 1000);
+        }, 500);
       },
       error: () => {
         setTimeout(() => {
           this.isLoading = false;
-        }, 1000);
+        }, 500);
       }
     });
   }

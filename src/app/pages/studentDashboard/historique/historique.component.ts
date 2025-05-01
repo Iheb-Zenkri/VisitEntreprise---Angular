@@ -1,12 +1,47 @@
 import { Component } from '@angular/core';
+import { ApiService } from '../../../core/services/api.service';
+import { Visit } from '../../../core/services/types.service';
+import { DomSanitizer } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { VisitItemComponent } from '../../../components/visit-item/visit-item.component';
+import { VisitGalleryComponent } from "../../../components/visit-gallery/visit-gallery.component";
 
 @Component({
   selector: 'app-historique',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, VisitItemComponent, VisitGalleryComponent],
   templateUrl: './historique.component.html',
   styleUrl: './historique.component.css'
 })
 export class HistoriqueComponent {
+visits: Visit[] = [];
+  isLoading = true;
+  selectedVisitId: number | null = null;
+  selectedVisit : Visit | undefined ;
 
+  onVisitActionClick(visitId: number): void {
+    this.selectedVisitId = visitId;
+    this.selectedVisit = this.visits.find(v => v.id === visitId);
+}
+  constructor(private visitService : ApiService,private sanitizer: DomSanitizer){}
+
+  ngOnInit(): void {
+    this.visitService.get<Visit[]>('visits/finished').subscribe({
+      next: (data: Visit[]) => {
+        this.visits = data
+        if (this.visits.length > 0) {
+          this.selectedVisitId = this.visits[0].id;
+          this.selectedVisit = this.visits[0];
+        }
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 500);
+      },
+      error: () => {
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 500);
+      }
+    });
+  }
 }

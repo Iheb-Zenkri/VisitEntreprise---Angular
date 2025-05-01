@@ -76,10 +76,19 @@ export interface VisitProgram{
   id : number;
   userId : number;
   visitId : number;
-  documentDTO : {
-    id : number;
-    title : string;
-    uniqueName : string;
-    uploadedAt : string;
-  }
+  documentDTO :DocumentDTO
+}
+
+export interface VisitGallery{
+  id : number;
+  userId : number;
+  visitId : number;
+  documentDTO :DocumentDTO[]
+}
+
+export interface DocumentDTO {
+  id: number;
+  title: string;
+  uniqueName: string;
+  uploadedAt: string;
 }

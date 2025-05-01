@@ -1,1 +1,40 @@
-<p>historique works!</p>
+<div class="container">
+    <!-- Skeleton Loader -->
+    <ng-container *ngIf="isLoading; else visitList" >
+      <div class="visit-list">
+        <div class="skeleton-card" *ngFor="let i of [1,2,3,4]">
+          <div class="skeleton-img"></div>
+          <div class="skeleton-texts">
+            <div class="skeleton-text"></div>
+            <div class="skeleton-text"></div>
+          </div>
+        </div>
+      </div>
+      <div class="skeleton-aside"></div>
+    </ng-container>
+  
+    <!-- Visit Cards -->
+    <ng-template #visitList>
+      <div *ngIf="visits.length > 0; else noData">
+        <div  class="visit-view">
+            <div class="visit-list">
+                <h2>Les Visites</h2>
+                <app-visit-item  
+                *ngFor="let visit of visits"
+                [visit]="visit"
+                [isActive]="visit.id === selectedVisitId"
+                (actionClicked)="onVisitActionClick(visit.id)"
+                ></app-visit-item>
+            </div>
+            <div class="feedback-list">
+                <app-visit-gallery [visit]="selectedVisit"></app-visit-gallery>
+            </div>
+        </div>
+      </div>
+    </ng-template>
+  
+    <!-- No Data Template -->
+    <ng-template #noData>
+      <p class="no-data">No visits available.</p>
+    </ng-template>
+  </div>
