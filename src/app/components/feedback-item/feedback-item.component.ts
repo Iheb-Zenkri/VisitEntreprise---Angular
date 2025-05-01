@@ -3,17 +3,18 @@ import { Feedback, FeedbackRating } from './../../core/services/types.service';
 import { Component, Input } from '@angular/core';
 import { ApiService } from '../../core/services/api.service';
 import { CommonModule } from '@angular/common';
+import { UpdateFeedbackComponent } from "../update-feedback/update-feedback.component";
 
 @Component({
   selector: 'app-feedback-item',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, UpdateFeedbackComponent],
   templateUrl: './feedback-item.component.html',
   styleUrl: './feedback-item.component.css'
 })
 export class FeedbackItemComponent {
   @Input() feedback : Feedback | undefined
-  
+  isMyFeedBack = false ;
   icons: string[] = [];
   responsiblePictureURL : SafeUrl = "assets/default-profile.png";
   constructor(private api : ApiService,private sanitizer: DomSanitizer){}
@@ -29,6 +30,32 @@ export class FeedbackItemComponent {
         this.responsiblePictureURL = 'assets/default-profile.png';
       }
     });
+
+    const userData = localStorage.getItem('user');
+    if (userData) {
+      const user = JSON.parse(userData);
+      this.isMyFeedBack = this.feedback?.user.id == user.id;
+    }
+
+  }
+
+  deleteFeedback() {
+    const confirmed = confirm("Êtes-vous sûr de vouloir supprimer ce commentaire ?");
+  
+    if (confirmed) {
+      this.api.delete(`feedback/${this.feedback?.id}`).subscribe({
+        next: (response) => {
+        },
+        error: (err) => {
+          console.error("Erreur lors de la suppression du commentaire :",err);
+        }
+      });
+    }
+  }
+  
+  showFeedbackForm: boolean = false;
+  toggleFeedbackForm() {
+    this.showFeedbackForm = !this.showFeedbackForm;
   }
 
   getDate(): string {

@@ -28,6 +28,7 @@
       <div *ngIf="visits.length > 0; else noData">
         <div  class="visit-view">
           <div class="visit-list">
+            <h2>Les Visites programmées </h2>
             <app-visit-card 
             *ngFor="let visit of visits"
               [visit]="visit"

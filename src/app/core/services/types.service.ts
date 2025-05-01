@@ -71,3 +71,15 @@ export interface Group{
   name: string;
   students: Teacher[];
 }
+
+export interface VisitProgram{
+  id : number;
+  userId : number;
+  visitId : number;
+  documentDTO : {
+    id : number;
+    title : string;
+    uniqueName : string;
+    uploadedAt : string;
+  }
+}

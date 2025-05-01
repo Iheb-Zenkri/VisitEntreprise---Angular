@@ -10,7 +10,16 @@
     <div class="comment">
         {{feedback?.comment}}
     </div>
-    <div class="stars">
-        <i *ngFor="let icon of icons" [class]="icon"></i>
+    <div class="footer">
+        <i (click)="deleteFeedback()" *ngIf="isMyFeedBack" class="fa-solid fa-trash trash"><span>supprimer</span></i>
+        <i (click)="toggleFeedbackForm()" *ngIf="isMyFeedBack" class="fa-regular fa-pen-to-square edit"><span>modifier</span></i>
+        <div class="stars">
+            <i *ngFor="let icon of icons" [class]="icon"></i>
+        </div>
     </div>
 </div>
+
+<app-update-feedback *ngIf="showFeedbackForm" 
+    (feedbackCancelled)="toggleFeedbackForm()"
+    [feedback]="feedback">
+</app-update-feedback>

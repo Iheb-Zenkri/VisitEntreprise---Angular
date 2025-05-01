@@ -53,8 +53,41 @@
     color: #333;
     font-weight: 400;
 }
+
+.footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer .trash{
+    padding-left: 10px;
+    color: red;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+.footer .trash>span{
+    font-weight: 400;
+}
+
+.footer .edit{
+    padding-left: 20px;
+    color: #4D55CC;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    font-size: 15px;
+}
+.footer .edit>span{
+    font-size: 14px;
+}
 .stars{
     display: flex;
+    flex-grow: 1;
     justify-content: end;
     gap: 2px;
     color: #e63946;

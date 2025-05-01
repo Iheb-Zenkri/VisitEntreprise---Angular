@@ -1,7 +1,6 @@
 <div class="container">
     <div class="head">
         <span class="date"><i class="fa-regular fa-calendar"></i> {{getDate()}} {{getTime()}}</span>
-        <span class="status">{{visit?.status}}</span>
     </div>
     <h2>Profil d'entreprise</h2>
     <img [src]="companyPictureUTL" alt="photo d'entreprise">
@@ -26,5 +25,14 @@
         <h6><i class="fa-solid fa-envelope"></i>{{visit?.responsible?.email}} </h6>
         <span>dernière connexion : <b>{{getLastLogin()}}</b></span>
     </div>
-    
+    <h2>Documents de Visite</h2>
+
+    <button *ngFor="let program of visitPrograms" (click)="openPdf(program.documentDTO.id)">
+        <span>
+            <i class="fa-solid fa-file-pdf"></i>
+            {{program.documentDTO.title}}
+        </span>
+        <span>{{getUploadedAt(program.documentDTO.uploadedAt)}}</span>
+    </button>
+
 </div>
