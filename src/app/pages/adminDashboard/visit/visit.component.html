@@ -1,0 +1,35 @@
+<div class="container">
+    <div  class="visit-view">
+        <h2>
+        Gestion des Visites <span (click)="toggleAddVisitForm()">+ Créer une nouvelle visite</span></h2>
+        <div class="visit-list">
+        <div *ngFor="let visit of visits">
+            <app-visit-card 
+                [visit]="visit"
+                [isActive]="visit.id === selectedVisitId"
+                (actionClicked)="onVisitActionClick(visit.id)"
+            ></app-visit-card>
+            <div class="footer">
+                <span (click)="toggleVisitGallery(visit.id)">Gallery de Visite</span>
+                <i (click)="deleteVisit(visit.id)" class="fa-solid fa-trash trash"></i>
+                <i (click)="toggleUpdateVisitForm(visit.id)" class="fa-regular fa-pen-to-square edit"></i>
+            </div>
+        </div>
+        </div>
+    </div>
+    <app-visit-details [visit]="selectedVisit"></app-visit-details>
+</div>
+<app-add-visit
+    *ngIf="showForm"
+    (addVisitCanceled)="toggleAddVisitForm()"
+></app-add-visit>
+<app-update-visite
+    *ngIf="showUpdateForm"
+    (updateVisitCanceled)="toggleUpdateVisitForm(selectedVisitId??0)"
+    [inputVisit]="selectedVisit"
+></app-update-visite>
+<app-gallery-popup
+    *ngIf="showVisitGallery"
+    (VisitCanceled)="toggleVisitGallery(selectedVisitId??0)"
+    [visitId]="selectedVisitId"
+></app-gallery-popup>

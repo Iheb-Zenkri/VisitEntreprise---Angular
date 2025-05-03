@@ -1,5 +1,8 @@
 <div class="layout">
-    <SideBar></SideBar>
+    <SideBar>
+      <NavItem [label]="'Entreprises'" [isActive]="isActive('gestion-entreprises')" [routerLink]="'/admin/dashboard/gestion-entreprises'" faClass="fa-solid fa-globe" />
+      <NavItem [label]="'Visites'" [isActive]="isActive('gestion-visites')" [routerLink]="'/admin/dashboard/gestion-visites'" faClass="fa-solid fa-location-dot" />
+    </SideBar>
     <div class="content">
       <Header></Header>
       <router-outlet></router-outlet>

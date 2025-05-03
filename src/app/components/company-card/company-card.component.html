@@ -1,0 +1,30 @@
+<div class="card">
+    <div class="row1">
+        <img [src]="companyPictureUTL" alt="photo d'entreprise">
+        <div class="details">
+            <h2>{{company?.name}}</h2>
+            <span><i class="fa-solid fa-location-dot"></i>{{company?.address}}</span>
+            <span><i class="fa-solid fa-medal"></i>{{company?.expertiseDomain}}</span>
+        </div>
+    </div>
+    <div class="contact">
+        <span *ngIf="company?.contactEmail != null"><i class="fa-regular fa-envelope"></i> {{company?.contactEmail}}</span>
+        <div class="line"></div>
+        <span *ngIf="company?.contactPhone != null"><i class="fa-solid fa-phone"></i> {{company?.contactPhone}}</span>
+    </div>
+    <div class="extra">
+        <span>Score <b>{{company?.relevanceScore}}</b>/100</span>
+        <span>Ancien Visites : <b>{{company?.visitFrequency}}</b></span>
+        <div class="do">
+            <i (click)="deleteCompany()"  class="fa-solid fa-trash trash"></i>
+            <i (click)="toggleFeedbackForm()"  class="fa-regular fa-pen-to-square edit"></i>
+        </div>
+    </div>
+</div>
+
+<app-update-company
+    *ngIf="showForm"
+    (updateCompanyCanceled)="toggleFeedbackForm()"
+    [imagePreview]="companyPictureUTL"
+    [inputCompany]="company"
+></app-update-company>

@@ -1,0 +1,88 @@
+<div class="popup-overlay">
+    <div class="popup-form">
+        <label for="fileInput" class="image-upload">
+            <div *ngIf="!imagePreview" class="placeholder" >
+                Cliquez choisir un photo
+            </div>
+            <img *ngIf="imagePreview" [src]="imagePreview" alt="Preview" class="preview-img" />
+            <input
+            type="file"
+            id="fileInput"
+            accept="image/*"
+            hidden
+            (change)="onImageSelected($event)"
+            />
+        </label>
+        <form #userForm="ngForm" (ngSubmit)="onSubmit()" >            
+            <div class="input-group">
+              <input
+                type="text"
+                name="name"
+                [(ngModel)]="Company.name"
+                placeholder="Nom d'entreprise"
+                required
+                (ngModelChange)="onFormChange()"
+                />
+            </div>
+  
+            <div class="input-group">
+                <input
+                  type="text"
+                  name="address"
+                  [(ngModel)]="Company.address"
+                  placeholder="Adresse d'entreprise"
+                  required
+                  (ngModelChange)="onFormChange()"
+                />
+            </div>
+  
+            <div class="input-group">
+                  <input
+                    type="email"
+                    name="contactEmail"
+                    [(ngModel)]="Company.contactEmail"
+                    placeholder="Email d'entreprise"
+                    required
+                    (ngModelChange)="onFormChange()"
+                  />
+              </div>
+              <div class="input-group">
+                  <input
+                    type="number"
+                    name="contactPhone"
+                    [(ngModel)]="Company.contactPhone"
+                    placeholder="Téléphone d'entreprise"
+                    required
+                    (ngModelChange)="onFormChange()"
+                  />
+              </div>
+              <div class="input-group">
+                  <input
+                    type="text"
+                    name="expertiseDomain"
+                    [(ngModel)]="Company.expertiseDomain"
+                    placeholder="Domaine d'expertise d'entreprise"
+                    required
+                    (ngModelChange)="onFormChange()"
+                  />
+              </div>
+              <div class="input-group">
+                <label>Le score d'entreprise</label>
+                  <input
+                    type="number"
+                    name="relevanceScore"
+                    [(ngModel)]="Company.relevanceScore"
+                    min="1" max="100" step="0.01"
+                    required
+                    (ngModelChange)="onFormChange()"
+                  />
+              </div>
+              <div class="form-actions">
+                  <button type="submit"  [disabled]="notChanged" class="send">Envoyer</button>
+                  <button class="cancel" type="button" (click)="onCancel()">Annuler</button>
+              </div>
+          </form>
+  
+    </div>
+  </div>
+  

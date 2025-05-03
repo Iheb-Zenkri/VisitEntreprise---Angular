@@ -1,0 +1,61 @@
+<div class="popup-overlay">
+    <div class="popup-form">
+        <h2>Modifier Visite</h2>
+        <form #userForm="ngForm" (ngSubmit)="onSubmit()" >            
+            <div class="input-group">
+              <input
+                type="date"
+                name="date"
+                [(ngModel)]="visit.date"
+                placeholder="date"
+                required
+                (ngModelChange)="onFormChange()"
+                />
+            </div>
+            <div class="input-group">
+                <input
+                  type="time"
+                  name="time"
+                  [(ngModel)]="visit.time"
+                  placeholder="time"
+                  required
+                  (ngModelChange)="onFormChange()"
+                  />
+              </div>
+              <div class="input-group">
+                <select id="responsibleSelect" [(ngModel)]="visit.responsibleId" name="responsible" required (ngModelChange)="onFormChange()">
+                    <option value="0" selected>Affecter un responsable</option>
+                    <option *ngFor="let responsable of responsables" [value]="responsable.id">
+                      {{ responsable.lastName }} {{responsable.firstName}}
+                    </option>
+                  </select>
+              </div>
+              <div class="input-group">
+                <select name="status" [(ngModel)]="visit.status" name="status" required (ngModelChange)="onFormChange()">
+                  <option disabled selected value="">-- Sélectionner un statut --</option>
+                  <option value="PLANNED">Planifiée</option>
+                  <option value="COMPLETED">Terminée</option>
+                  <option value="CANCELLED">Annulée</option>                  
+                </select>
+              </div>
+              <div class="documents">
+                  <h2>
+                    Documents de Visite 
+                    <input #fileInput  type="file" (change)="onFileSelected($event,fileInput)" accept="application/pdf" />
+                  </h2>
+                    <button class="pdf" *ngFor="let program of visitPrograms">
+                        <span (click)="openPdf(program.documentDTO.id)">
+                            <i class="fa-solid fa-file-pdf"></i>
+                            {{program.documentDTO.title}}
+                        </span>
+                        <span (click)="openPdf(program.documentDTO.id)">{{getUploadedAt(program.documentDTO.uploadedAt)}}</span>
+                        <i (click)="deleteDocument(program.id)" class="fa-solid fa-trash trash"></i>
+                    </button>
+              </div>
+            <div class="form-actions">
+                <button type="submit"  [disabled]="notChanged" class="send">Envoyer</button>
+                <button class="cancel" type="button" (click)="onCancel()">Annuler</button>
+            </div>
+        </form>
+    </div>
+</div>

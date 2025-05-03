@@ -41,7 +41,7 @@ h2{
     color: #444;
 }
 
-.container>img{
+.container img{
     width: 300px;
     align-self: center;
     border-radius: 16px;

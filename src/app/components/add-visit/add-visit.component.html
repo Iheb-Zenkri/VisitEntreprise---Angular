@@ -1,0 +1,47 @@
+<div class="popup-overlay">
+    <div class="popup-form">
+        <h2>Nouvelle Visite</h2>
+        <form #userForm="ngForm" (ngSubmit)="onSubmit()" >            
+            <div class="input-group">
+              <input
+                type="date"
+                name="name"
+                [(ngModel)]="visit.date"
+                placeholder="Nom d'entreprise"
+                required
+                (ngModelChange)="onFormChange()"
+                />
+            </div>
+            <div class="input-group">
+                <input
+                  type="time"
+                  name="name"
+                  [(ngModel)]="visit.time"
+                  placeholder="Nom d'entreprise"
+                  required
+                  (ngModelChange)="onFormChange()"
+                  />
+              </div>
+              <div class="input-group">
+                <select id="companySelect" [(ngModel)]="visit.companyId" name="company" required (ngModelChange)="onFormChange()">
+                    <option value="0" selected>Choisir l'entreprise</option>
+                    <option *ngFor="let company of companies" [value]="company.id">
+                      {{ company.name }}
+                    </option>
+                  </select>
+              </div>
+              <div class="input-group">
+                <select id="responsibleSelect" [(ngModel)]="responsibleId" name="responsible" required (ngModelChange)="onFormChange()">
+                    <option value="0" selected>Affecter un responsable</option>
+                    <option *ngFor="let responsable of responsables" [value]="responsable.id">
+                      {{ responsable.lastName }} {{responsable.firstName}}
+                    </option>
+                  </select>
+              </div>
+            <div class="form-actions">
+                <button type="submit"  [disabled]="notChanged" class="send">Envoyer</button>
+                <button class="cancel" type="button" (click)="onCancel()">Annuler</button>
+            </div>
+        </form>
+    </div>
+</div>

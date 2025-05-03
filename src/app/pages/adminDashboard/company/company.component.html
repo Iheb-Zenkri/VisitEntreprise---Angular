@@ -1,0 +1,14 @@
+<div class="container">
+    <h2>
+        Gestion des Entreprise <span (click)="toggleAddCompanyForm()">+ Créer une nouvelle entreprise</span></h2>
+    <div class="list">
+        <app-company-card 
+        *ngFor="let company of Companies"
+        [company]="company"
+        ></app-company-card>
+    </div>
+</div>
+<app-add-company
+    *ngIf="isAddCompanyToggled"
+    (addCompanyCanceled)="toggleAddCompanyForm()"
+></app-add-company>

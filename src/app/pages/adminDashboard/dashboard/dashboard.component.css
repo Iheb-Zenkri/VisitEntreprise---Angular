@@ -1,0 +1,11 @@
+/* dashboard.component.css */
+.layout {
+    display: flex;
+    height: 100vh;
+    background-color: #fff;
+  }
+  
+  .content {
+    flex-grow: 1;
+  }
+  

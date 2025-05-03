@@ -1,0 +1,15 @@
+<div class="container">
+    <div *ngIf="visitGallery; else noData">
+        <h2>Les images de Visite :</h2>
+        <div class="gallery">
+            <app-gellery-image 
+                *ngFor="let doc of visitGallery?.documentDTO"
+                [documentId]="doc.id"
+                [key]="doc.id"
+            ></app-gellery-image>
+          </div>
+    </div>
+    <ng-template #noData>
+        <p class="no-data">Aucune Image dans la gallery de cette Visite</p>
+      </ng-template>
+</div>

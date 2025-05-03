@@ -55,7 +55,6 @@ export class VisitGalleryComponent {
   private loadVisitGallery(){
     this.api.get<VisitGallery>(`visit-gallery/visit/${this.visit?.id}`).subscribe({
       next : (response : VisitGallery) =>{
-        console.log(response)
         this.visitGallery = response ;
       },
       error : () =>{

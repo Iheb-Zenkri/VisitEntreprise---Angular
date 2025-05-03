@@ -1,0 +1,43 @@
+.container{
+    display: flex;
+    padding: 30px;
+    flex-direction: column;
+    gap: 30px;
+    overflow-y:auto;
+    scrollbar-color: rgba(195,129,255,1);
+    max-height: 80vh;
+}
+
+.container>h2{
+    font-size: 36px;
+    letter-spacing: 1px;
+    color: #333;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    padding-right: 50px;
+    gap: 50px;
+}
+
+h2>span{
+    padding: 10px 20px;
+    display: grid;
+    place-content: center;
+    background-color: #c381ff;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+h2>span:hover{
+    background-color: #b371f0;
+}
+
+.list{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 25px;
+}
+

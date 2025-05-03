@@ -1,0 +1,160 @@
+.popup-overlay {
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+  }
+  
+  .popup-form {
+    background-color: #fff;
+    padding: 20px 40px;
+    border-radius: 12px;
+    max-width: 600px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+
+  
+  form{
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 30px;
+    gap: 20px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+  width: 460px;
+}
+
+
+input , select{
+  background-color: #faf6ff;
+  border: solid 1px #f5f3fd;
+  border-radius: 8px;
+  padding: 14px 12px;
+  width: 100%;
+  font-size: 16px;
+  outline: none;
+  letter-spacing: 1px;
+  color: #555;
+}
+
+input::placeholder{
+  color: #999 ;
+  font-size: 14px;
+}
+
+.documents{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+  width: 460px;
+}
+
+.documents>h2{
+  font-size: 16px;
+  color: #666;
+}
+
+.pdf{
+  width: 95%;
+  background-color: #fff;
+  padding: 12px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #c381ff;
+  border-radius: 12px;
+  color: #393F47;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+
+
+.pdf i{
+  color: #FFA09B;
+}
+
+.pdf span:has(i){
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.pdf:has(span:hover){
+  background-color: #f9f2ff;
+}
+
+.pdf>i{
+  position: absolute;
+  right: -5%;
+  color: #EB5A3C;
+}
+  .form-actions {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    margin-top: 8px;
+    gap: 10px;
+  }
+  
+  .send{
+    all: unset;
+    padding: 8px 32px;
+    background-color: #c381ff;
+    border: 2px solid #c381ff;
+    color: #fff;
+    border-radius: 14px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .send:hover:not(:disabled) {
+    background-color: #af74e5;
+    border: 2px solid #af74e5;
+  }
+  
+  .send:disabled {
+    background-color: #e7ccff;
+    border: 2px solid #e7ccff;
+    cursor: not-allowed;
+  }
+  
+  .cancel{
+    all: unset;
+    padding: 8px 32px;
+    background-color: #fff;
+    border: 2px solid #c381ff;
+    color: #c381ff;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .cancel:hover{
+    border: 2px solid #af74e5;
+    color: #af74e5;
+    background-color: #fcf6ff;
+  }

@@ -1,0 +1,31 @@
+<div class="popup-overlay">
+    <div class="popup-form">
+        <h2>Gallery d'Image</h2>
+        <div class="images">
+            <div *ngFor="let gallery of imageArray">
+                <img [src]="gallery.url" alt="">
+                <i (click)="deletePhoto(gallery.id)" class="fa-solid fa-trash trash"></i>
+            </div>
+        </div>
+
+        <label for="fileInput" class="image-upload">
+            <div *ngIf="!imagePreview" class="placeholder" >
+                Cliquez choisir un photo
+            </div>
+            <img *ngIf="imagePreview" [src]="imagePreview" alt="Preview" class="preview-img" />
+            <input
+            type="file"
+            id="fileInput"
+            accept="image/*"
+            hidden
+            (change)="onImageSelected($event)"
+            #fileInput
+            />
+        </label>
+
+        <div class="form-actions">
+            <button type="submit" (click)="onSubmit(fileInput)" [disabled]="!selectedFile" class="send">Ajouter</button>
+            <button class="cancel" type="button" (click)="onCancel()">Terminer</button>
+        </div>
+    </div>
+</div>
